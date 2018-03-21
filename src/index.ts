@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as yargonaut from "yargonaut"
 import * as yargs from "yargs"
 import { FeatureCommand } from "./commands/FeatureCommand";
