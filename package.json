@@ -1,19 +1,22 @@
 {
   "name": "ionic-featurer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "feature generator for ionic 3",
   "main": "./build/index.js",
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "compile": "tsc"
   },
-  "keywords": ["ionic3", "angular5", "generator"],
+  "keywords": [
+    "ionic3",
+    "angular5",
+    "generator"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/matias-pierobon/ionic-featurer.git"
   },
-  "author":
-    "Matias Pierobon <matias.pierobonm@gmail.com> (https://matias-pierobon.github.io)",
+  "author": "Matias Pierobon <matias.pierobonm@gmail.com> (https://matias-pierobon.github.io)",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.2",
