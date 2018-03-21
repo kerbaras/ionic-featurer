@@ -5,14 +5,15 @@
   "main": "./build/index.js",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc"
   },
-  "keywords": [
-    "ionic3",
-    "angular5",
-    "generator"
-  ],
-  "author": "Matias Pierobon <matias.pierobonm@gmail.com> (https://matias-pierobon.github.io)",
+  "keywords": ["ionic3", "angular5", "generator"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matias-pierobon/ionic-featurer.git"
+  },
+  "author":
+    "Matias Pierobon <matias.pierobonm@gmail.com> (https://matias-pierobon.github.io)",
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.3.2",
