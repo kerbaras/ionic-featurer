@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var yargonaut = require("yargonaut");
 var yargs = require("yargs");
 var FeatureCommand_1 = require("./commands/FeatureCommand");
+var PageCommand_1 = require("./commands/PageCommand");
 yargonaut
     .style("blue")
     .style("yellow", "required")
@@ -12,6 +13,7 @@ yargonaut
 yargs
     .usage("Usage: $0 <command> [options]")
     .command(new FeatureCommand_1.FeatureCommand())
+    .command(new PageCommand_1.PageCommand())
     .demandCommand(1)
     .strict()
     .alias("v", "version")

@@ -37,10 +37,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var change_case_1 = require("change-case");
 var path = require("path");
+var utils = require("./utils");
+var feature_1 = require("../templates/feature");
 var FeatureCommand = (function () {
     function FeatureCommand() {
+        var _this = this;
         this.command = "generate:feature";
         this.describe = "Creates a new feature.";
+        this.handler = function (argv) { return __awaiter(_this, void 0, void 0, function () {
+            var directory, name, selector;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        directory = argv.dir;
+                        name = change_case_1.pascalCase(argv.name);
+                        selector = change_case_1.paramCase(name);
+                        return [4, this.createFolders(directory, selector)];
+                    case 1:
+                        _a.sent();
+                        return [4, this.createModule(directory, name, selector)];
+                    case 2:
+                        _a.sent();
+                        return [2];
+                }
+            });
+        }); };
     }
     FeatureCommand.prototype.builder = function (yargs) {
         return yargs
@@ -51,25 +72,46 @@ var FeatureCommand = (function () {
         })
             .option("d", {
             alias: "dir",
-            describe: "Directory where the feature should be created."
+            describe: "Directory where the feature should be created.",
+            default: "./src"
         });
     };
-    FeatureCommand.prototype.handler = function (argv) {
+    FeatureCommand.prototype.createFolders = function (directory, name) {
         return __awaiter(this, void 0, void 0, function () {
-            var directory, name, selector, folders, folder;
+            var folders, _i, folders_1, folder;
             return __generator(this, function (_a) {
-                directory = argv.dir;
-                if (!directory)
-                    directory = "./src";
-                name = change_case_1.pascalCase(argv.name);
-                selector = change_case_1.paramCase(name);
-                folders = ["assets", "components", "models", "services", "pages"];
-                for (folder in folders) {
-                    console.log(path.join(directory, 'features', selector, folder));
+                switch (_a.label) {
+                    case 0:
+                        folders = ["assets", "components", "models", "services", "pages"];
+                        _i = 0, folders_1 = folders;
+                        _a.label = 1;
+                    case 1:
+                        if (!(_i < folders_1.length)) return [3, 4];
+                        folder = folders_1[_i];
+                        return [4, utils.createDirectories(this.getPath(directory, name, folder))];
+                    case 2:
+                        _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        _i++;
+                        return [3, 1];
+                    case 4: return [2];
                 }
-                return [2];
             });
         });
+    };
+    FeatureCommand.prototype.createModule = function (directory, name, selector) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2, utils.createFile(this.getModulePath(directory, selector), feature_1.featureModuleTemplate(name))];
+            });
+        });
+    };
+    FeatureCommand.prototype.getModulePath = function (directory, name) {
+        return this.getPath(directory, name, name + ".module.ts");
+    };
+    FeatureCommand.prototype.getPath = function (directory, feature, name) {
+        return path.join(directory, "features", feature, name);
     };
     return FeatureCommand;
 }());
