@@ -1,4 +1,4 @@
-import { pascalCase, paramCase } from "change-case"
+import { pascalCase, paramCase, titleCase } from "change-case"
 import * as path from "path"
 import * as utils from "./utils"
 import { featureModuleTemplate } from "../templates/feature"
@@ -64,7 +64,7 @@ export class PageCommand {
     )
     await utils.createFile(
       this.getPath(directory, selector, `${selector}.html`),
-      pageHtmlTemplate()
+      pageHtmlTemplate(titleCase(name))
     )
     await utils.createFile(
       this.getPath(directory, selector, `${selector}.scss`),
