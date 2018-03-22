@@ -2,6 +2,7 @@
 import * as yargonaut from "yargonaut"
 import * as yargs from "yargs"
 import { FeatureCommand } from "./commands/FeatureCommand";
+import { PageCommand } from "./commands/PageCommand";
 
 yargonaut
   .style("blue")
@@ -12,6 +13,7 @@ yargonaut
 yargs
   .usage("Usage: $0 <command> [options]")
   .command(new FeatureCommand())
+  .command(new PageCommand())
   .demandCommand(1)
   .strict()
   .alias("v", "version")

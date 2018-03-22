@@ -20,10 +20,10 @@ import { ${name}Page } from "./${selector}"
 })
 export class ${name}PageModule {}`
 
-export const pageHtmlTemplate = () =>
+export const pageHtmlTemplate = name =>
   `<ion-header>
   <ion-navbar>
-    <ion-title></ion-title>
+    <ion-title>${name}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -31,4 +31,6 @@ export const pageHtmlTemplate = () =>
 </ion-content>
 `
 
-export const pageScssTemplate = selector => `${selector}{}`
+export const pageScssTemplate = selector =>
+  `${selector} {
+}`
